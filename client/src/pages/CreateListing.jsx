@@ -129,7 +129,7 @@ const CreateListing = () => {
       });
 
       /* Send a POST request to server */
-      const response = await axios.post("https://localhost:8000/properties/create", { body: listingForm })
+      const response = await axios.post("https://real-estate-website-1.onrender.com/properties/create", { body: listingForm })
         .then(result => {
           navigate("/");
         })

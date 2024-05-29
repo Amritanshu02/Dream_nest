@@ -17,7 +17,7 @@ const ReservationList = () => {
 
   const getReservationList = async () => {
     try {
-      const response = await axios.get(`https://localhost:8000/users/${userId}/reservations`);
+      const response = await axios.get(`https://real-estate-website-1.onrender.com/users/${userId}/reservations`);
 
       const data = await response.json();
       dispatch(setReservationList(data));

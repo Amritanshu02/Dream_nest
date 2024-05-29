@@ -50,7 +50,7 @@ const ListingCard = ({
 
   const patchWishList = async () => {
     if (user?._id !== creator._id) {
-      const response = await axios.patch(`https://localhost:8000/users/${user?._id}/${listingId}`, {},
+      const response = await axios.patch(`https://real-estate-website-1.onrender.com/users/${user?._id}/${listingId}`, {},
         {
           headers: {
             "Content-Type": "application/json",

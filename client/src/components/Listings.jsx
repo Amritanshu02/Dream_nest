@@ -17,8 +17,8 @@ const Listings = () => {
   const getFeedListings = async () => {
     try {
       const url = selectedCategory !== "All"
-        ? `https://localhost:8000/properties?category=${selectedCategory}`
-        : "https://localhost:8000/properties";
+        ? `https://real-estate-website-1.onrender.com/properties?category=${selectedCategory}`
+        : "https://real-estate-website-1.onrender.com/properties";
 
       const response = await axios.get(url);
 

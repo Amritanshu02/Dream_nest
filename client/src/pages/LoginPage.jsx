@@ -18,7 +18,7 @@ const LoginPage = () => {
     e.preventDefault()
 
     try {
-      const response = await axios.post("https://localhost:8000/auth/login", { body: JSON.stringify({ email, password }) });
+      const response = await axios.post("https://real-estate-website-1.onrender.com/auth/login", { body: JSON.stringify({ email, password }) });
       /* Get data after fetching */
       const loggedIn = await response.json()
 

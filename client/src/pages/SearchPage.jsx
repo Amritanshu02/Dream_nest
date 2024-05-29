@@ -18,7 +18,7 @@ const SearchPage = () => {
 
   const getSearchListings = async () => {
     try {
-      const response = await axios.get(`https://localhost:8000/properties/search/${search}`);
+      const response = await axios.get(`https://real-estate-website-1.onrender.com/properties/search/${search}`);
 
       const data = await response.json()
       dispatch(setListings({ listings: data }))

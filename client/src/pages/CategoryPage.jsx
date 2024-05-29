@@ -18,7 +18,7 @@ const CategoryPage = () => {
 
   const getFeedListings = async () => {
     try {
-      const response = await axios.get(`https://localhost:8000/properties?category=${category}`);
+      const response = await axios.get(`https://real-estate-website-1.onrender.com/properties?category=${category}`);
 
       const data = await response.json();
       dispatch(setListings({ listings: data }));

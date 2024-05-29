@@ -17,7 +17,7 @@ const PropertyList = () => {
   const dispatch = useDispatch()
   const getPropertyList = async () => {
     try {
-      const response = await axios.get(`https://localhost:8000/users/${user._id}/properties`);
+      const response = await axios.get(`https://real-estate-website-1.onrender.com/users/${user._id}/properties`);
       const data = await response.json()
       console.log(data)
       dispatch(setPropertyList(data))

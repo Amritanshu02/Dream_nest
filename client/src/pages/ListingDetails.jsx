@@ -24,7 +24,7 @@ const ListingDetails = () => {
 
   const getListingDetails = async () => {
     try {
-      const response = await axios.get(`https://localhost:8000/properties/${listingId}`);
+      const response = await axios.get(`https://real-estate-website-1.onrender.com/properties/${listingId}`);
 
       const data = await response.json();
       setListing(data);

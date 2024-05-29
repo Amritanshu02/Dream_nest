@@ -17,7 +17,7 @@ const TripList = () => {
 
   const getTripList = async () => {
     try {
-      const response = await axios.get(`https://localhost:8000/users/${userId}/trips`);
+      const response = await axios.get(`https://real-estate-website-1.onrender.com/users/${userId}/trips`);
 
       const data = await response.json();
       dispatch(setTripList(data));

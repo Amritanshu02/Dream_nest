@@ -129,7 +129,7 @@ const UpdateListing = () => {
             });
 
             /* Send a PUT request to server */
-            const response = await axios.put(`https://localhost:8000/properties/update/${id}`, { body: listingForm });
+            const response = await axios.put(`https://real-estate-website-1.onrender.com/properties/update/${id}`, { body: listingForm });
 
             if (response.ok) {
                 navigate("/");
