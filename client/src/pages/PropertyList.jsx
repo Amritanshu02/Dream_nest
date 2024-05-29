@@ -5,7 +5,8 @@ import ListingCard from "../components/ListingCard";
 import { useEffect, useState } from "react";
 import { setPropertyList } from "../redux/state";
 import Loader from "../components/Loader";
-import Footer from "../components/Footer"
+import Footer from "../components/Footer";
+import axios from "axios";
 
 const PropertyList = () => {
   const [loading, setLoading] = useState(true)
@@ -16,9 +17,7 @@ const PropertyList = () => {
   const dispatch = useDispatch()
   const getPropertyList = async () => {
     try {
-      const response = await fetch(`https://real-estate-website-1.onrender.com/users/${user._id}/properties`, {
-        method: "GET"
-      })
+      const response = await axios.get(`https://localhost:8000/users/${user._id}/properties`);
       const data = await response.json()
       console.log(data)
       dispatch(setPropertyList(data))

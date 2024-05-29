@@ -4,6 +4,7 @@ import { setLogin } from "../redux/state";
 import { useDispatch } from "react-redux"
 import { useNavigate } from "react-router-dom"
 import Navbar from "../components/Navbar";
+import axios from "axios";
 
 const LoginPage = () => {
   const [email, setEmail] = useState("");
@@ -17,14 +18,7 @@ const LoginPage = () => {
     e.preventDefault()
 
     try {
-      const response = await fetch("https://real-estate-website-1.onrender.com/auth/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({ email, password })
-      })
-
+      const response = await axios.post("https://localhost:8000/auth/login", { body: JSON.stringify({ email, password }) });
       /* Get data after fetching */
       const loggedIn = await response.json()
 

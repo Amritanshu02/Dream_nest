@@ -1,7 +1,6 @@
 import "../styles/CreateListing.scss";
 import Navbar from "../components/Navbar";
 import { categories, types, facilities } from "../data";
-
 import { RemoveCircleOutline, AddCircleOutline } from "@mui/icons-material";
 import variables from "../styles/variables.scss";
 import { DragDropContext, Draggable, Droppable } from "react-beautiful-dnd";
@@ -51,9 +50,7 @@ const UpdateListing = () => {
             );
         } else {
             setAmenities((prev) => [...prev, facility]);
-            // amenities.push(facility);
         }
-        // console.log("amenities:", amenities);
     };
 
     /* UPLOAD, DRAG & DROP, REMOVE PHOTOS */
@@ -132,10 +129,7 @@ const UpdateListing = () => {
             });
 
             /* Send a PUT request to server */
-            const response = await fetch(`https://real-estate-website-1.onrender.com/properties/update/${id}`, {
-                method: "PUT",
-                body: listingForm,
-            });
+            const response = await axios.put(`https://localhost:8000/properties/update/${id}`, { body: listingForm });
 
             if (response.ok) {
                 navigate("/");
@@ -169,12 +163,6 @@ const UpdateListing = () => {
                 setBedroomCount(response.data.bedroomCount);
                 setBathroomCount(response.data.bathroomCount);
                 setBedCount(response.data.bedCount);
-                // {
-                //     response.data.amenities.map((item) => {
-                //         console.log("item: ", item)
-                //         setAmenities((prev) => [...prev, item]);
-                //     })
-                // }
             })
             .catch((error) => {
                 console.log(error);

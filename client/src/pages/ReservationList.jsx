@@ -5,7 +5,8 @@ import Navbar from "../components/Navbar";
 import { useDispatch, useSelector } from "react-redux";
 import { setReservationList } from "../redux/state";
 import ListingCard from "../components/ListingCard";
-import Footer from "../components/Footer"
+import Footer from "../components/Footer";
+import axios from "axios";
 
 const ReservationList = () => {
   const [loading, setLoading] = useState(true);
@@ -16,12 +17,7 @@ const ReservationList = () => {
 
   const getReservationList = async () => {
     try {
-      const response = await fetch(
-        `https://real-estate-website-1.onrender.com/users/${userId}/reservations`,
-        {
-          method: "GET",
-        }
-      );
+      const response = await axios.get(`https://localhost:8000/users/${userId}/reservations`);
 
       const data = await response.json();
       dispatch(setReservationList(data));

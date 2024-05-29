@@ -1,7 +1,6 @@
 import "../styles/CreateListing.scss";
 import Navbar from "../components/Navbar";
 import { categories, types, facilities } from "../data";
-
 import { RemoveCircleOutline, AddCircleOutline } from "@mui/icons-material";
 import variables from "../styles/variables.scss";
 import { DragDropContext, Draggable, Droppable } from "react-beautiful-dnd";
@@ -10,7 +9,8 @@ import { useState } from "react";
 import { BiTrash } from "react-icons/bi";
 import { useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
-import Footer from "../components/Footer"
+import Footer from "../components/Footer";
+import axios from "axios";
 
 const CreateListing = () => {
   const [category, setCategory] = useState("");
@@ -129,14 +129,12 @@ const CreateListing = () => {
       });
 
       /* Send a POST request to server */
-      const response = await fetch("https://real-estate-website-1.onrender.com/properties/create", {
-        method: "POST",
-        body: listingForm,
-      });
+      const response = await axios.post("https://localhost:8000/properties/create", { body: listingForm })
+        .then(result => {
+          navigate("/");
+        })
+        .catch((error) => console.log(error))
 
-      if (response.ok) {
-        navigate("/");
-      }
     } catch (err) {
       console.log("Publish Listing failed", err.message);
     }

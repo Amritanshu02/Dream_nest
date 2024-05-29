@@ -6,7 +6,8 @@ import { useEffect, useState } from "react";
 import Loader from "../components/Loader"
 import Navbar from "../components/Navbar";
 import ListingCard from "../components/ListingCard";
-import Footer from "../components/Footer"
+import Footer from "../components/Footer";
+import axios from "axios";
 
 const SearchPage = () => {
   const [loading, setLoading] = useState(true)
@@ -17,9 +18,7 @@ const SearchPage = () => {
 
   const getSearchListings = async () => {
     try {
-      const response = await fetch(`https://real-estate-website-1.onrender.com/properties/search/${search}`, {
-        method: "GET"
-      })
+      const response = await axios.get(`https://localhost:8000/properties/search/${search}`);
 
       const data = await response.json()
       dispatch(setListings({ listings: data }))

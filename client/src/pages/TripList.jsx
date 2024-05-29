@@ -5,7 +5,8 @@ import Navbar from "../components/Navbar";
 import { useDispatch, useSelector } from "react-redux";
 import { setTripList } from "../redux/state";
 import ListingCard from "../components/ListingCard";
-import Footer from "../components/Footer"
+import Footer from "../components/Footer";
+import axios from "axios";
 
 const TripList = () => {
   const [loading, setLoading] = useState(true);
@@ -16,12 +17,7 @@ const TripList = () => {
 
   const getTripList = async () => {
     try {
-      const response = await fetch(
-        `https://real-estate-website-1.onrender.com/users/${userId}/trips`,
-        {
-          method: "GET",
-        }
-      );
+      const response = await axios.get(`https://localhost:8000/users/${userId}/trips`);
 
       const data = await response.json();
       dispatch(setTripList(data));

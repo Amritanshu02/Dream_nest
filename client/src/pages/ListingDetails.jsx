@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import "../styles/ListingDetails.scss";
 import { useNavigate, useParams } from "react-router-dom";
 import { facilities } from "../data";
-
 import "react-date-range/dist/styles.css";
 import "react-date-range/dist/theme/default.css";
 import { DateRange } from "react-date-range";
@@ -13,7 +12,8 @@ import { Link } from "react-router-dom";
 import LockIcon from '@mui/icons-material/Lock';
 import EditIcon from '@mui/icons-material/Edit';
 import LocalPhoneIcon from '@mui/icons-material/LocalPhone';
-import Footer from "../components/Footer"
+import Footer from "../components/Footer";
+import axios from "axios";
 
 const ListingDetails = () => {
   const [loading, setLoading] = useState(true);
@@ -24,12 +24,7 @@ const ListingDetails = () => {
 
   const getListingDetails = async () => {
     try {
-      const response = await fetch(
-        `https://real-estate-website-1.onrender.com/properties/${listingId}`,
-        {
-          method: "GET",
-        }
-      );
+      const response = await axios.get(`https://localhost:8000/properties/${listingId}`);
 
       const data = await response.json();
       setListing(data);

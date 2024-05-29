@@ -6,7 +6,8 @@ import { useSelector, useDispatch } from "react-redux";
 import { setListings } from "../redux/state";
 import Loader from "../components/Loader";
 import ListingCard from "../components/ListingCard";
-import Footer from "../components/Footer"
+import Footer from "../components/Footer";
+import axios from "axios";
 
 const CategoryPage = () => {
   const [loading, setLoading] = useState(true);
@@ -17,12 +18,7 @@ const CategoryPage = () => {
 
   const getFeedListings = async () => {
     try {
-      const response = await fetch(
-        `https://real-estate-website-1.onrender.com/properties?category=${category}`,
-        {
-          method: "GET",
-        }
-      );
+      const response = await axios.get(`https://localhost:8000/properties?category=${category}`);
 
       const data = await response.json();
       dispatch(setListings({ listings: data }));

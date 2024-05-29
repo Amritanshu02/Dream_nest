@@ -16,14 +16,11 @@ const Listings = () => {
 
   const getFeedListings = async () => {
     try {
-      const response = await fetch(
-        selectedCategory !== "All"
-          ? `https://real-estate-website-1.onrender.com/properties?category=${selectedCategory}`
-          : "https://real-estate-website-1.onrender.com/properties",
-        {
-          method: "GET",
-        }
-      );
+      const url = selectedCategory !== "All"
+        ? `https://localhost:8000/properties?category=${selectedCategory}`
+        : "https://localhost:8000/properties";
+
+      const response = await axios.get(url);
 
       const data = await response.json();
       dispatch(setListings({ listings: data }));
